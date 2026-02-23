@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: diginest-ai-receptionist-test
+
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+
+  h2:
+    console:
+      enabled: true
+
+server:
+  port: 0
+
+app:
+  jwt:
+    secret: testSecretKeyForJwtSigningInTestEnvironmentOnly123456
+    expiration-ms: 86400000
+
+logging:
+  level:
+    com.diginest: DEBUG
+    org.springframework.security: DEBUG

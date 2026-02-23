@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: diginest-ai-receptionist
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/diginest
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:mySecretKeyForDigiNestAIReceptionist2024SecureAndLongEnoughForHS512}
+    expiration-ms: 86400000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+
+logging:
+  level:
+    com.diginest: INFO
+    org.springframework.security: DEBUG
